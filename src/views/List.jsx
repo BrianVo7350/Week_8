@@ -1,20 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState }from 'react'
+import { Link } from 'react-router-dom'
+
+
 
 
 export default function List() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState('');
-//set stuff if for changing lists
+//set stuff is for changing lists
   const handleAddTodo = () => {
     if (inputValue !== '') {
-      setTodos([todos, inputValue]);
+      setTodos([...todos, inputValue]);
       setInputValue('');
     }
   };
 
   const handleDeleteTodo = (index) => {
-    setTodos([todos.slice(0, index), todos.slice(index + 1)]);
+    setTodos([...todos.slice(0, index), ...todos.slice(index + 1)]);
   };
 
   return (

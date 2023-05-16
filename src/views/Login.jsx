@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Login({ Login }) {
+export default function Login({LogMeIn}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ export default function Login({ Login }) {
         const data = await res.json();
         if (data.status === 'ok'){
             const myUserInfo = data.data
-            Login(myUserInfo)
+            LogMeIn(myUserInfo)
         }
 
     }

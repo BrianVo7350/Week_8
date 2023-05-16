@@ -13,14 +13,34 @@ export default class navbar extends Component {
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/Login">Login</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/Signup">Sign-Up</Link>
-                    </li>
-                    <li className="nav-item">
                         <Link className="nav-link" to="/List">To-Do-List</Link>
                     </li>
+                    {
+                            this.props.user.apitoken ?
+                                (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="/login" onClick={this.props.logMeOut}>Log Out</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <p className="nav-link" >Hello, {this.props.user.username}</p>
+                                        </li>
+                                    </>
+                                )
+                                :
+                                (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="/login">Login</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" to="/signup">Sign Up</Link>
+                                        </li>
+                                    </>
+                                )
+                    }
+
+
                 </ul>
             </div>
         </div>
